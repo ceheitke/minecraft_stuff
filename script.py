@@ -7,4 +7,4 @@ mc = minecraft.Minecraft.create(address="127.0.0.1", name="emerouseagle")
 # PUT CODE HERE.
 # Checkout the /examples directory with ready-to-go scripts, all you need to do is update your IP and name in them!
 
-mc.postToChat('I'' in!')
+mc.postToChat('I''m in!')

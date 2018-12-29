@@ -1,14 +1,15 @@
-from mcpi.minecraft import Minecraft
+import mcpi.minecraft as minecraft
 import time
- 
-# mc = Minecraft.create("192.168.1.12")
-mc = Minecraft.create()
+
+# Connect to minecraft server 127.0.0.1 as player 'steve'. Replace with your own IP/name!
+mc = minecraft.Minecraft.create(address="192.168.1.12", name="littlewizard0717")
+
  
 active_spell = "teleport"
  
 while True:
  
-    for blockhit in mc.events.pollBlockHits():
+    for blockhit in mc.player.pollProjectileHits():
         if active_spell == "teleport":
             mc.player.setPos(blockhit.pos.x, blockhit.pos.y, blockhit.pos.z)
         elif active_spell == "lavapool":
@@ -17,7 +18,7 @@ while True:
                          blockhit.pos.x-4, blockhit.pos.y-1, blockhit.pos.z-4,
                          lava_block_id)
  
-    for chatpost in mc.events.pollChatPosts():
+    for chatpost in mc.player.pollChatPosts():
         if chatpost.message.lower() == "lavapool":
             active_spell = "lavapool"
         elif chatpost.message.lower() == "teleport":
